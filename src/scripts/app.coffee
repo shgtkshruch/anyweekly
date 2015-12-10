@@ -3,7 +3,6 @@ _ = require 'underscore'
 
 javascriptWeekly = require './javascriptWeekly.coffee'
 cssWeekly = require './cssWeekly.coffee'
-showItems = require './showItems.coffee'
 
 $issue = $ '#issue'
 
@@ -22,14 +21,22 @@ $ '#submit'
           $issue.append 'Issueを取得できませんでした。'
           return
 
-        showItems items
+        $ul = $ '<ul></ul>'
+        compiled = _.template $('#javascript-template').text()
+
+        items.forEach (item) ->
+          $ul.append compiled item
+        $issue.html $ul
+
     else if weekly is 'css'
       cssWeekly (err, items) ->
         if err is 'err'
           $issue.append 'Issueを取得できませんでした。'
           return
 
+        $ul = $ '<ul></ul>'
         compiled = _.template $('#css-template').text()
-        items.forEach (item) ->
-          $issue.append compiled item
 
+        items.forEach (item) ->
+          $ul.append compiled item
+        $issue.html $ul

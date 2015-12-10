@@ -18,13 +18,20 @@ html(lang="ja")
     header.header
       form.header__form
         select#select
-          option(value="javascript") Javascript Weekly
+          option(value="javascript") JavaScript Weekly
           option(value="css" selected) CSS Weekly
         input#submit(type="submit" value="決定")
     main
       #issue
 
     script(src="https://www.google.com/jsapi")
+
+    script(type="text/tempalte" id="javascript-template")
+      li
+        h2
+          a(href!="<%= link %>") <%= title %>
+        p <%= text %>
+        p <%= author %>
 
     script(type="text/tempalte" id="css-template")
       li
