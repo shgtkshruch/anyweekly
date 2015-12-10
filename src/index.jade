@@ -15,7 +15,14 @@ html(lang="ja")
     // endbuild
     link(rel='stylesheet', href='styles/style.css', media='all')
   body
-    h1 Hello Github Pages
+    header.header
+      form.header__form
+        select#select
+          option(value="javascript") Javascript Weekly
+        input#issueNum(type="number" name="issue")
+        input#submit(type="submit" value="決定")
+    main
+      #issue
 
     // build:js scripts/vendor.js
     // bower:js
@@ -23,5 +30,5 @@ html(lang="ja")
     // endbuild
 
     // build:js scripts/main.js
-    script(src='scripts/script.js')
+    script(src='scripts/app.js')
     // endbuild
