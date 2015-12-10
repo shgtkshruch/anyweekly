@@ -1,0 +1,15 @@
+script(type="text/tempalte" id="javascript-template")
+  li
+    h2
+      a(href!="<%= link %>") <%= title %>
+    p <%= text %>
+    p <%= author %>
+
+script(type="text/tempalte" id="css-template")
+  li
+    h2
+      a(href!="<%= link %>") <%= title %>
+    <% if (img) { %>
+    img(src!="<%= img %>" alt="")
+    <% } %>
+    p <%= text %>
