@@ -1,11 +1,11 @@
 jquery = require 'jquery'
 cheerio = require 'cheerio'
 
-module.exports = (issue, cb) ->
+module.exports = (cb) ->
   items = []
 
   jquery.ajax
-    url: 'http://javascriptweekly.com/issues/' + issue
+    url: 'http://javascriptweekly.com/latest'
     success: (data, status, xhr) ->
       if data is 'no such issue'
         cb 'err', null
