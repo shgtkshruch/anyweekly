@@ -8,12 +8,12 @@ $issue = $ '#issue'
 
 google.load 'feeds', 1
 
-$ '#submit'
-  .click (e) ->
+$ '#select'
+  .change (e) ->
     e.preventDefault()
 
     $issue.empty()
-    weekly  = $('#select').val()
+    weekly  = $(@).val()
 
     if weekly is 'javascript'
       javascriptWeekly (err, items) ->
