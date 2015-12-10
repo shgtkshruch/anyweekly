@@ -19,10 +19,21 @@ html(lang="ja")
       form.header__form
         select#select
           option(value="javascript") Javascript Weekly
-          option(value="css") CSS Weekly
+          option(value="css" selected) CSS Weekly
         input#submit(type="submit" value="決定")
     main
       #issue
+
+    script(src="https://www.google.com/jsapi")
+
+    script(type="text/tempalte" id="css-template")
+      li
+        h2
+          a(href!="<%= link %>") <%= title %>
+        <% if (img) { %>
+        img(src!="<%= img %>" alt="")
+        <% } %>
+        p <%= text %>
 
     // build:js scripts/vendor.js
     // bower:js
