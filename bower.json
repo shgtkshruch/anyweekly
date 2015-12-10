@@ -1,0 +1,21 @@
+{
+  "name": "anyweekly",
+  "description": "",
+  "main": "",
+  "authors": [
+    "shgtkshruch <shgtk.shruch@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/shgtkshruch/anyweekly",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}
