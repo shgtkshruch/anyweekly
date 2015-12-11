@@ -12,7 +12,7 @@ $ '#select'
   .change (e) ->
     e.preventDefault()
 
-    $issue.empty()
+    $issue.empty().hide()
     weekly  = $(@).val()
 
     if weekly is 'javascript'
@@ -28,6 +28,7 @@ $ '#select'
           $ul.append compiled item
         $issue.html $ul
         $issue.prepend '<h1 class="issue__title">JavaScript Weekly</h1>'
+        $issue.fadeToggle()
 
     else if weekly is 'css'
       cssWeekly (err, items) ->
@@ -42,3 +43,4 @@ $ '#select'
           $ul.append compiled item
         $issue.html $ul
         $issue.prepend '<h1 class="issue__title">CSS Weekly</h1>'
+        $issue.fadeToggle()
