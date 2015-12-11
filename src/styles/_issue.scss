@@ -9,6 +9,9 @@
   a {
     color: $color-link;
   }
+  &__favicon {
+    margin-right: 5px;
+  }
   &__title {
     position: relative;
     padding-bottom: 10px;

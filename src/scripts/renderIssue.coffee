@@ -13,6 +13,7 @@ module.exports = (err, issue, templatePrefix) ->
   titleTemplate = _.template $('#title-template').text()
 
   issue.items.forEach (item) ->
+    item.favicon = 'http://www.google.com/s2/favicons?domain=' + item.link
     $ul.append bodyTemplate item
   $issue.html $ul
   $issue.prepend titleTemplate issue
