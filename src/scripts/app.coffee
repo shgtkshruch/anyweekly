@@ -1,8 +1,8 @@
 $ = require 'jquery'
 _ = require 'underscore'
 
-javascriptWeekly = require './javascriptWeekly.coffee'
-cssWeekly = require './cssWeekly.coffee'
+javascriptWeekly = require './weekly/javascript.coffee'
+cssWeekly = require './weekly/css.coffee'
 
 $issue = $ '#issue'
 
