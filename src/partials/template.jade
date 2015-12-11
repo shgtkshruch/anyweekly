@@ -1,4 +1,4 @@
-script(type="text/tempalte" id="javascript-template")
+script(type="text/tempalte" id="html5-template")
   li.issue__item
     h2.issue__heading
       a(href!="<%= link %>" target="_blank") <%= heading %>
@@ -8,8 +8,16 @@ script(type="text/tempalte" id="javascript-template")
 script(type="text/tempalte" id="css-template")
   li.issue__item
     h2.issue__heading
-      a(href!="<%= link %>") <%= heading %>
+      a(href!="<%= link %>" target="_blank") <%= heading %>
     <% if (img) { %>
     img.issue__img(src!="<%= img %>" alt="")
     <% } %>
     p.issue__text <%= text %>
+
+script(type="text/tempalte" id="javascript-template")
+  li.issue__item
+    h2.issue__heading
+      a(href!="<%= link %>" target="_blank") <%= heading %>
+    p.issue__text <%= text %>
+    p.issue__author <%= author %>
+
