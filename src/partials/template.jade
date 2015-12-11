@@ -38,3 +38,10 @@ script(type="text/tempalte" id="node-template")
     p.issue__text <%= text %>
     p.issue__author <%= author %>
 
+script(type="text/tempalte" id="webdesign-template")
+  li.issue__item
+    h2.issue__heading
+      img.issue__favicon(src!="<%= favicon %>")
+      a(href!="<%= link %>" target="_blank") <%= heading %>
+    p.issue__text <%= text %>
+

@@ -4,6 +4,7 @@ html5Weekly = require './weekly/html5.coffee'
 cssWeekly = require './weekly/css.coffee'
 javascriptWeekly = require './weekly/javascript.coffee'
 nodeWeekly = require './weekly/node.coffee'
+webdesignWeekly = require './weekly/webdesign.coffee'
 renderIssue = require './renderIssue.coffee'
 
 $issue = $ '#issue'
@@ -33,3 +34,7 @@ $ '#select'
       when 'node'
         nodeWeekly (err, issue) ->
           renderIssue err, issue, 'node'
+
+      when 'webdesign'
+        webdesignWeekly (err, issue) ->
+          renderIssue err, issue, 'webdesign'
