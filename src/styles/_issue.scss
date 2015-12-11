@@ -9,8 +9,11 @@
   a {
     color: $color-link;
   }
+  &__container {
+    padding-left: 20px;
+  }
   &__favicon {
-    margin-right: 5px;
+    margin-right: 10px;
   }
   &__title {
     position: relative;
@@ -29,9 +32,6 @@
     bottom: 10px;
     font-size: 20px;
     font-weight: normal;
-  }
-  &__container {
-    padding-left: 30px;
   }
   &__item {
     &:not(:last-child) {
