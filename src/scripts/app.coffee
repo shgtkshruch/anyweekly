@@ -21,12 +21,13 @@ $ '#select'
           $issue.append 'Issueを取得できませんでした。'
           return
 
-        $ul = $ '<ul></ul>'
+        $ul = $ '<ul class="issue__container"></ul>'
         compiled = _.template $('#javascript-template').text()
 
         items.forEach (item) ->
           $ul.append compiled item
         $issue.html $ul
+        $issue.prepend '<h1 class="issue__title">JavaScript Weekly</h1>'
 
     else if weekly is 'css'
       cssWeekly (err, items) ->
@@ -34,9 +35,10 @@ $ '#select'
           $issue.append 'Issueを取得できませんでした。'
           return
 
-        $ul = $ '<ul></ul>'
+        $ul = $ '<ul class="issue__container"></ul>'
         compiled = _.template $('#css-template').text()
 
         items.forEach (item) ->
           $ul.append compiled item
         $issue.html $ul
+        $issue.prepend '<h1 class="issue__title">CSS Weekly</h1>'

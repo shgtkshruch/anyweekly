@@ -7,10 +7,19 @@
   a {
     color: $color-link;
   }
+  &__title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 25px;
+    font-size: 36px;
+  }
+  &__container {
+    padding-left: 30px;
+  }
   &__item {
     margin-bottom: 30px;
   }
-  &__title {
+  &__heading {
     font-size: 24px;
     > a {
       color: $color-black;

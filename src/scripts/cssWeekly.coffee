@@ -17,7 +17,7 @@ module.exports = (cb) ->
     while $target.text().indexOf('Sponsor') is -1
       if $target.is 'h2'
         item = {}
-        item.title = $target.text()
+        item.heading = $target.text()
         item.link = $target.find('a').attr('href')
         item.img = $target.next().find('img').attr('src')
         item.text = $target.next().next().text()
@@ -30,7 +30,7 @@ module.exports = (cb) ->
     while $target.text().indexOf('Jobs') is -1
       if $target.is 'h2'
         item = {}
-        item.title = $target.text()
+        item.heading = $target.text()
         item.link = $target.find('a').attr('href')
         item.text = $target.next().text()
         item.img = ""
@@ -43,7 +43,7 @@ module.exports = (cb) ->
     while $target.text().indexOf('Inspiration') is -1
       if $target.is 'h2'
         item = {}
-        item.title = $target.text()
+        item.heading = $target.text()
         item.link = $target.find('a').attr('href')
         item.text = $target.next().text()
         item.img = ""
@@ -56,7 +56,7 @@ module.exports = (cb) ->
     while $target.text().indexOf('Until Next Week') is -1
       if $target.is 'h2'
         item = {}
-        item.title = $target.text()
+        item.heading = $target.text()
         item.link = $target.find('a').attr('href')
         item.img = $target.next().find('img').attr('src')
         item.text = $target.next().next().text()

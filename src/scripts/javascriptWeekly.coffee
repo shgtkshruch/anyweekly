@@ -20,7 +20,7 @@ module.exports = (cb) ->
           return
 
         item = {}
-        item.title = $(@).find('a').text()
+        item.heading = $(@).find('a').text()
         item.link = $(@).find('a').attr('href')
         item.text = $(@).next().html()
         item.author = $(@).next().next().text()
@@ -34,7 +34,7 @@ module.exports = (cb) ->
           return
 
         item = {}
-        item.title = $(@).find('> a').text()
+        item.heading = $(@).find('> a').text()
         item.link = $(@).find('> a').attr('href')
 
         text = $(@).find('span:nth-last-child(2)').text()

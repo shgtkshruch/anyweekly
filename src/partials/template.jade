@@ -1,14 +1,14 @@
 script(type="text/tempalte" id="javascript-template")
   li.issue__item
-    h2.issue__title
-      a(href!="<%= link %>" target="_blank") <%= title %>
+    h2.issue__heading
+      a(href!="<%= link %>" target="_blank") <%= heading %>
     p.issue__text <%= text %>
     p.issue__author <%= author %>
 
 script(type="text/tempalte" id="css-template")
   li.issue__item
-    h2.issue__title
-      a(href!="<%= link %>") <%= title %>
+    h2.issue__heading
+      a(href!="<%= link %>") <%= heading %>
     <% if (img) { %>
     img.issue__img(src!="<%= img %>" alt="")
     <% } %>
