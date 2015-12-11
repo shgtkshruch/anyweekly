@@ -107,7 +107,7 @@ gulp.task 'publish', ->
 gulp.task 'default', ['jade', 'sass', 'coffee', 'image', 'browser-sync'], ->
   gulp.watch config.src + '/**/*.jade', ['jade']
   gulp.watch config.src + '/styles/*.scss', ['sass']
-  gulp.watch config.src + '/scripts/*.coffee', ['coffee']
+  gulp.watch config.src + '/scripts/**/*.coffee', ['coffee']
   gulp.watch config.src + '/images/*', ['image']
 
 gulp.task 'prebuild', ['html', 'sass', 'coffee', 'image']
