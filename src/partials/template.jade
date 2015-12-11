@@ -27,3 +27,10 @@ script(type="text/tempalte" id="javascript-template")
     p.issue__text <%= text %>
     p.issue__author <%= author %>
 
+script(type="text/tempalte" id="node-template")
+  li.issue__item
+    h2.issue__heading
+      a(href!="<%= link %>" target="_blank") <%= heading %>
+    p.issue__text <%= text %>
+    p.issue__author <%= author %>
+

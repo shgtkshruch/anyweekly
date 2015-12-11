@@ -3,6 +3,7 @@ $ = require 'jquery'
 html5Weekly = require './weekly/html5.coffee'
 cssWeekly = require './weekly/css.coffee'
 javascriptWeekly = require './weekly/javascript.coffee'
+nodeWeekly = require './weekly/node.coffee'
 renderIssue = require './renderIssue.coffee'
 
 $issue = $ '#issue'
@@ -29,3 +30,6 @@ $ '#select'
         javascriptWeekly (err, issue) ->
           renderIssue err, issue, 'javascript'
 
+      when 'node'
+        nodeWeekly (err, issue) ->
+          renderIssue err, issue, 'node'
