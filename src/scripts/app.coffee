@@ -1,8 +1,8 @@
 $ = require 'jquery'
-_ = require 'underscore'
 
 javascriptWeekly = require './weekly/javascript.coffee'
 cssWeekly = require './weekly/css.coffee'
+renderIssue = require './renderIssue.coffee'
 
 $issue = $ '#issue'
 
@@ -15,32 +15,11 @@ $ '#select'
     $issue.empty().hide()
     weekly  = $(@).val()
 
-    if weekly is 'javascript'
-      javascriptWeekly (err, items) ->
-        if err is 'err'
-          $issue.append 'Issueを取得できませんでした。'
-          return
+    switch weekly
+      when 'javascript'
+        javascriptWeekly (err, items) ->
+          renderIssue err, items, 'javascript', 'JavaScript'
 
-        $ul = $ '<ul class="issue__container"></ul>'
-        compiled = _.template $('#javascript-template').text()
-
-        items.forEach (item) ->
-          $ul.append compiled item
-        $issue.html $ul
-        $issue.prepend '<h1 class="issue__title">JavaScript Weekly</h1>'
-        $issue.fadeToggle()
-
-    else if weekly is 'css'
-      cssWeekly (err, items) ->
-        if err is 'err'
-          $issue.append 'Issueを取得できませんでした。'
-          return
-
-        $ul = $ '<ul class="issue__container"></ul>'
-        compiled = _.template $('#css-template').text()
-
-        items.forEach (item) ->
-          $ul.append compiled item
-        $issue.html $ul
-        $issue.prepend '<h1 class="issue__title">CSS Weekly</h1>'
-        $issue.fadeToggle()
+      when 'css'
+        cssWeekly (err, items) ->
+          renderIssue err, items, 'css', 'CSS'
