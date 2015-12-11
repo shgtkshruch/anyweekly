@@ -1,7 +1,9 @@
 cheerio = require 'cheerio'
+moment = require 'moment'
 
 module.exports = (cb) ->
-  items = []
+  issue = {}
+  issue.items = []
 
   feed = new google.feeds.Feed 'http://feeds.feedburner.com/CSS-Weekly'
   feed.setNumEntries 1
@@ -9,6 +11,11 @@ module.exports = (cb) ->
     if result.error
       cb 'err', null
       return
+
+    entry = result.feed.entries[0]
+    issue.title = result.feed.title
+    issue.num = entry.title.match(/#(\d+)$/)[1]
+    issue.date = moment(new Date(entry.publishedDate)).format('MMMM D, YYYY')
 
     $ = cheerio.load result.feed.entries[0].content
 
@@ -21,7 +28,7 @@ module.exports = (cb) ->
         item.link = $target.find('a').attr('href')
         item.img = $target.next().find('img').attr('src')
         item.text = $target.next().next().text()
-        items.push item
+        issue.items.push item
 
       $target = $target.next()
 
@@ -34,7 +41,7 @@ module.exports = (cb) ->
         item.link = $target.find('a').attr('href')
         item.text = $target.next().text()
         item.img = ""
-        items.push item
+        issue.items.push item
 
       $target = $target.next()
 
@@ -47,7 +54,7 @@ module.exports = (cb) ->
         item.link = $target.find('a').attr('href')
         item.text = $target.next().text()
         item.img = ""
-        items.push item
+        issue.items.push item
 
       $target = $target.next()
 
@@ -61,8 +68,8 @@ module.exports = (cb) ->
         item.img = $target.next().find('img').attr('src')
         item.text = $target.next().next().text()
         item.img = ""
-        items.push item
+        issue.items.push item
 
       $target = $target.next()
 
-    cb null, items
+    cb null, issue

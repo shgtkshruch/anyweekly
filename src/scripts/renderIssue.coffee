@@ -1,17 +1,19 @@
 $ = require 'jquery'
 _ = require 'underscore'
 
-module.exports = (err, items, templatePrefix, issueTitle) ->
+module.exports = (err, issue, templatePrefix) ->
+  $issue = $ '#issue'
+
   if err is 'err'
     $issue.append 'Issueを取得できませんでした。'
     return
 
-  $issue = $ '#issue'
   $ul = $ '<ul class="issue__container"></ul>'
-  compiled = _.template $('#'+ templatePrefix + '-template').text()
+  bodyTemplate = _.template $('#'+ templatePrefix + '-template').text()
+  titleTemplate = _.template $('#title-template').text()
 
-  items.forEach (item) ->
-    $ul.append compiled item
+  issue.items.forEach (item) ->
+    $ul.append bodyTemplate item
   $issue.html $ul
-  $issue.prepend '<h1 class="issue__title">' + issueTitle + ' Weekly</h1>'
+  $issue.prepend titleTemplate issue
   $issue.fadeToggle()

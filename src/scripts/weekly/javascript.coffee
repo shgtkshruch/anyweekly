@@ -1,8 +1,9 @@
-jquery = require 'jquery'
 cheerio = require 'cheerio'
+moment = require 'moment'
 
 module.exports = (cb) ->
-  items = []
+  issue = {}
+  issue.items = []
 
   feed = new google.feeds.Feed 'http://javascriptweekly.com/rss'
   feed.setNumEntries 1
@@ -10,6 +11,11 @@ module.exports = (cb) ->
     if result.error
       cb 'err', null
       return
+
+    entry = result.feed.entries[0]
+    issue.title = result.feed.title
+    issue.num = entry.title.match(/\s(\d+)$/)[1]
+    issue.date = moment(new Date(entry.publishedDate)).format('MMMM D, YYYY')
 
     $ = cheerio.load result.feed.entries[0].content
 
@@ -24,7 +30,7 @@ module.exports = (cb) ->
         item.link = $(@).find('a').attr('href')
         item.text = $(@).next().html()
         item.author = $(@).next().next().text()
-        items.push item
+        issue.items.push item
 
     # brief
     $ 'table table:nth-child(2) ul:last-child'
@@ -45,6 +51,6 @@ module.exports = (cb) ->
 
         item.author = $(@).find('span:last-child').text()
 
-        items.push item
+        issue.items.push item
 
-    cb null, items
+    cb null, issue

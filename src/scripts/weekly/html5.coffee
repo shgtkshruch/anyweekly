@@ -1,7 +1,9 @@
 cheerio = require 'cheerio'
+moment = require 'moment'
 
 module.exports = (cb) ->
-  items = []
+  issue = {}
+  issue.items = []
 
   feed = new google.feeds.Feed 'http://html5weekly.com/rss'
   feed.setNumEntries 1
@@ -9,6 +11,11 @@ module.exports = (cb) ->
     if result.error
       cb 'err', null
       return
+
+    entry = result.feed.entries[0]
+    issue.title = result.feed.title
+    issue.num = entry.link.match(/\/(\d+)$/)[1]
+    issue.date = moment(new Date(entry.publishedDate)).format('MMMM D, YYYY')
 
     $ = cheerio.load result.feed.entries[0].content
 
@@ -25,7 +32,7 @@ module.exports = (cb) ->
         item.link = $target.find('tr > td > div:first-child > a').attr('href')
         item.text = $target.find('tr > td > div:nth-child(3)').text()
         item.author = $target.find('tr > td > div:nth-child(2)').text()
-        items.push item
+        issue.items.push item
 
       $target = $target.next()
 
@@ -41,7 +48,7 @@ module.exports = (cb) ->
         item.author = $(@).find('> span:last-child').text()
         text = $(@).find('> span:nth-last-child(2)').text()
         item.text = if text.length > 10 then text else ""
-        items.push item
+        issue.items.push item
 
-    cb null, items
+    cb null, issue
 

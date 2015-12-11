@@ -18,14 +18,14 @@ $ '#select'
 
     switch weekly
       when 'html5'
-        html5Weekly (err, items) ->
-          renderIssue err, items, 'html5', 'HTML5'
+        html5Weekly (err, issue) ->
+          renderIssue err, issue, 'html5'
 
       when 'css'
-        cssWeekly (err, items) ->
-          renderIssue err, items, 'css', 'CSS'
+        cssWeekly (err, issue) ->
+          renderIssue err, issue, 'css'
 
       when 'javascript'
-        javascriptWeekly (err, items) ->
-          renderIssue err, items, 'javascript', 'JavaScript'
+        javascriptWeekly (err, issue) ->
+          renderIssue err, issue, 'javascript'
 
